@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 接口全限定类名 ps:namespace="com.cognex.dao.UserDao" -->
+<!-- 如果主配置文件配置了别名,直接写类名-->
+<mapper namespace="com.itheima.dao.UserDao">
+    <!--ps:id="findAll"  resultType="com.cognex.domain.User" -->
+    <select id="selectAll" resultType="user">
+SELECT  * FROM  USER ;
+    </select>
+</mapper>
+

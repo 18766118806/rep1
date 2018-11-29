@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- mybatis的主配置文件 -->
+<configuration>
+    <!-- 配置环境-->
+    <!--此位置可以使用<properties resource="文件名"引入外部文件, 用于指定配置文件的位置，是按照类路径的写法来写，并且必须存在于类路径下。-->
+
+    <properties resource="jdbcConfig.properties"></properties>
+    <typeAliases>
+        <!--   用于指定要配置别名的包，当指定之后,该包下的实体类都会注册别名，并且类名就是别名，不再区分大小写-->
+        <package name="com.itheima.domain"></package>
+    </typeAliases>
+    <environments default="mysql">
+        <!-- 配置mysql环境-->
+        <environment id="mysql">
+            <!-- 配置事物类型 -->
+            <transactionManager type="JDBC"></transactionManager>
+            <!-- 配置连接池 -->
+            <dataSource type="POOLED">
+                <!-- 四个基本信息-->
+                <!-- 如果上面通过引入外部文件方式,value="${jdbc.driver}"-->
+                <property name='driver' value="${jdbc.driver}"></property>
+                <property name='url' value="${jdbc.url}"></property>
+                <property name="username" value="${jdbc.username}"></property>
+                <property name="password" value="${jdbc.password}"></property>
+            </dataSource>
+        </environment>
+    </environments>
+    <!-- 指定映射配置文件的位置，映射配置文件指的是每个dao独立的配置文件 -->
+    <mappers>
+        <!--  xml使用,ps:resource="com/cognex/dao/IUserDao.xml"  -->
+        <!--  <mapper resource=""></mapper> -->
+        <!--  注解使用  ps:class="com.cognex.dao.UserDao"   -->
+        <!--  <mapper class=""></mapper>   -->
+        <!--  package标签是用于指定dao接口所在的包,当指定了之后就不需要在写mapper以及resource或者class了 -->
+        <package name="com.itheima.dao"></package>
+    </mappers>
+</configuration>
